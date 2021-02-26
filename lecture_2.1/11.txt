@@ -1,0 +1,15 @@
+//Even indexes (or numbers :)
+List <Integer> NumArray = new List<Integer> {1,2,3,4,5,6,7,8,9,10,99,98,97,96,95,94,93,92,91,90};
+
+List <Integer> EvenArray = new List <Integer>();
+List <Integer> EvenIndexArray = new List <Integer>();
+Integer i;
+
+for (i=0; i<NumArray.size();i++ ){
+    if (math.mod(NumArray[i],2)==0) {EvenArray.add(NumArray[i]);
+EvenIndexArray.add((i+1));}   
+} 
+       EvenArray.sort();
+
+System.debug(EvenArray);
+System.debug(EvenIndexArray);

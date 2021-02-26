@@ -1,0 +1,7 @@
+//Summ of all numbers from 1 to n
+//You can choos any integer n
+Integer i, S=0, n=15;
+for (i=1;i<=n;i++) {
+    S=S+i;
+}
+System.debug('Summ of all numbers from 1 to '+n+' = '+S);

@@ -1,0 +1,19 @@
+//Array for sorting
+List <Integer> arrayUnsorted = new List <Integer>{1,2,3,4,5,6,7,8,9,10,99,98,97,96,95,94,93,92,91,90};
+
+//Array for odd numbers
+List <Integer> arrayOdd = new List <Integer>();
+
+//Array for even numbers
+List <Integer> arrayEven = new List <Integer>();
+
+//Loop for sorting of numbers
+for (integer i=0; i<arrayUnsorted.size();i++) {
+//Checking parity condition
+    If (math.mod(arrayUnsorted[i],2)==0)  {arrayEven.add(arrayUnsorted[i]);
+   }  else {arrayOdd.add(arrayUnsorted[i]);}
+    System.debug('Mod '+math.mod(arrayUnsorted[i],2));}
+
+//Sorted arrays
+System.debug('Odd array - '+ ArrayOdd);
+System.debug('Even array - '+ ArrayEven);

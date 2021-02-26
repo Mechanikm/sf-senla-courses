@@ -1,0 +1,34 @@
+//Creating map of sizes
+String Text = ('Have you ever danced with the devil by the pale moonlight');
+
+Map <Integer, Integer> WordLenght = new Map <Integer, Integer>();
+List <String> TextArray = new List<String>();//Array for words from string
+List <Integer> WLenghtArray = new List<Integer>();//Consist lenght of words
+Integer i, count=0;
+
+//Add string Text to array
+TextArray = Text.split(' ');
+
+//Converting word array to lenght array, WLengtArray createn
+for (i=0; i<TextArray.size();i++){
+    WLenghtArray.add(TextArray[i].split('').size());
+}
+
+WLenghtArray.sort();
+
+//Count and add to map
+for (i=0;(i<WLenghtArray.size()-1);i++){
+    count++;
+     if (WLenghtArray[i]<WLenghtArray[i+1])
+    {WordLenght.put(WLenghtArray[i],count); 
+        count=0;}
+
+//Especially for last element
+if (i==WLenghtArray.size()-2&&WLenghtArray[i]==WLenghtArray[i+1])
+{WordLenght.put(WLenghtArray[i],count+1);
+} else {WordLenght.put(WLenghtArray[i+1],1);}
+}
+
+//I don't want to add a new constant for counting numbers so I check all string's lenght
+for (i=1;i<WLenghtArray.size();i++) {
+    System.debug(i+' letters word(s) - ' +WordLenght.get(i));}

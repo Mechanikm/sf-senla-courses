@@ -1,0 +1,12 @@
+//The odd words from a string
+String Text = ('The quick brown fox jumps over the lazy dog');
+
+List <String> TextArray = new List<String>();
+Integer i;
+
+//Add string to array
+TextArray = Text.split(' ');
+
+for (i=0; i<TextArray.size();i++) {
+    if(math.mod(i,2)==0) {System.debug(TextArray[i]);}
+}

@@ -1,0 +1,34 @@
+//Creating map of sizes
+String Text = ('If you do not know where you are going any road can take you there');
+
+Map <Integer, List<String>> SetWords = new Map <Integer, List<String>>();
+List <String> TextArray = new List<String>();//Array for words from string
+List <String> JuncArray = new List<String>();//Array for templates
+List <Integer> LenghtArray = new List<Integer>();//Consist lenght of words
+List <Integer> ShortArray = new List<Integer>();//Consist only different lenght of words
+Integer i, i2, count=1;
+
+//Add string Text to array
+TextArray = Text.split(' ');
+
+//Converting word array to lenght array, LenghtArray createn
+for (i=0; i<TextArray.size(); i++){
+    LenghtArray.add(TextArray[i].split('').size());
+}
+//Convert and zip array
+LenghtArray.sort();
+ShortArray.add(LenghtArray[0]);
+
+for (i=1; i<LenghtArray.size();i++){
+   if (LenghtArray[i]>ShortArray[ShortArray.size()-1]) {ShortArray.add(LenghtArray[i]); count++;}
+}
+//Add data to map
+for (i=0; i<count; i++) {
+           for (i2=0; i2<TextArray.size(); i2++)
+           {if (ShortArray[i]==TextArray[i2].split('').size()) {JuncArray.add(TextArray[i2]);}
+          		 }
+    SetWords.put(ShortArray[i],JuncArray);
+    JuncArray=new List<String>();
+  }
+    
+System.debug('Map - '+SetWords);
