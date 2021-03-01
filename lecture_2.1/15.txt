@@ -1,0 +1,14 @@
+// Fibonacci until N
+
+Integer N=1000, fib, fibprev, temp;
+List <Integer> Fibonacci = new List <Integer>();
+
+fibprev = 0;
+fib=1;
+while (fib<=N) {
+	Fibonacci.add(fib);
+	temp = fibprev+fib;
+	fibprev = fib;
+	fib = temp;
+	}
+System.debug(Fibonacci);

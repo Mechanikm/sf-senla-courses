@@ -1,0 +1,17 @@
+// Palindromity checking
+
+Long numToCheck=910019;
+Integer i;
+
+List <String> Norm = new List <String>();
+List <String> Back = new List <String>();
+
+//Transform Long to Array
+Norm = (String.ValueOf(numToCheck).split(''));
+
+//Reverse Array
+for (i=Norm.size()-1; i>=0; i--) {
+Back.add(Norm[i]);
+	}
+//Palindromity checking
+System.debug('Is the number '+numToCheck+' a palindrom? - '+(Norm==Back));
