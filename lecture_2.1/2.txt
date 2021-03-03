@@ -1,5 +1,8 @@
 //Sequence from 1 to 5 
-Integer i;
-for (i=1;i<=5;i++) {
+ 
+//old Integer i;
+//old for (i=1;i<=5;i++) {
+
+for (Integer i = 1; i <= 5; i++) {
     System.debug(i);
 }

@@ -1,9 +1,46 @@
 //Creating map of sizes
+String text = ('Have you ever danced with the devil by the pale moonlight');
+
+Map <Integer, Integer> wordLenght = new Map <Integer, Integer>();
+List <String> textArray = new List<String>();//Array for words from string
+List <Integer> wLenghtArray = new List<Integer>();//Consist lenght of words
+Integer count = 0;
+Integer max = 0;
+Integer i2;
+textArray = text.split(' ');
+
+//Converting word array to lenght array, wLengtArray createn
+for (Integer i = 0; i < textArray.size(); i++) {
+    wLenghtArray.add(textArray[i].split('').size());
+    if (textArray[i].split('').size() > max) {
+        max = textArray[i].split('').size();
+    }
+}
+wLenghtArray.sort();
+//Count and add to map
+for (Integer i = 0; i < wLenghtArray.size() - 1; i++) {
+    count++;
+    if (wLenghtArray[i] < wLenghtArray[i + 1]) {
+        wordLenght.put(wLenghtArray[i],count); 
+     	count = 0;
+        i2 = i;
+    }
+}
+
+//Especially for last element
+wordLenght.put(wLenghtArray[i2+1],1);
+
+//I add a new constant for counting numbers
+for (Integer i = 1; i <= max; i++) {
+    System.debug(i+' letters word(s) - ' + wordLenght.get(i));}
+
+/*old
+//Creating map of sizes
 String Text = ('Have you ever danced with the devil by the pale moonlight');
 
-Map <Integer, Integer> WordLenght = new Map <Integer, Integer>();
-List <String> TextArray = new List<String>();//Array for words from string
-List <Integer> WLenghtArray = new List<Integer>();//Consist lenght of words
+Map <Integer, Integer> wordLenght = new Map <Integer, Integer>();
+List <String> textArray = new List<String>();//Array for words from string
+List <Integer> wLenghtArray = new List<Integer>();//Consist lenght of words
 Integer i, count=0;
 
 //Add string Text to array
@@ -32,3 +69,4 @@ if (i==WLenghtArray.size()-2&&WLenghtArray[i]==WLenghtArray[i+1])
 //I don't want to add a new constant for counting numbers so I check all string's lenght
 for (i=1;i<WLenghtArray.size();i++) {
     System.debug(i+' letters word(s) - ' +WordLenght.get(i));}
+*/

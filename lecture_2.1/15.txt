@@ -1,5 +1,6 @@
 // Fibonacci until N
 
+//old Integer N=1000, fib, fibprev, temp;
 Integer N=1000, fib, fibprev, temp;
 List <Integer> Fibonacci = new List <Integer>();
 

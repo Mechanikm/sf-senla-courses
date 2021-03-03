@@ -1,10 +1,21 @@
 //Even indexes (or numbers :)
-List <Integer> NumArray = new List<Integer> {1,2,3,4,5,6,7,8,9,10,99,98,97,96,95,94,93,92,91,90};
+List <Integer> numArray = new List<Integer> {1,2,3,4,5,6,7,8,9,10,99,98,97,96,95,94,93,92,91,90};
 
-List <Integer> EvenArray = new List <Integer>();
-List <Integer> EvenIndexArray = new List <Integer>();
-Integer i;
+List <Integer> evenArray = new List <Integer>();
+List <Integer> evenIndexArray = new List <Integer>();
+//old Integer i;
 
+for (Integer i = 0; i < numArray.size(); i++) {
+    if (math.mod(numArray[i],2) == 0) {
+        evenArray.add(numArray[i]);
+        evenIndexArray.add((i + 1));}   
+} 
+evenArray.sort();
+//Choose which you need
+System.debug(evenArray);
+System.debug(evenIndexArray);
+
+/*old
 for (i=0; i<NumArray.size();i++ ){
     if (math.mod(NumArray[i],2)==0) {EvenArray.add(NumArray[i]);
 EvenIndexArray.add((i+1));}   
@@ -13,3 +24,4 @@ EvenIndexArray.add((i+1));}
 
 System.debug(EvenArray);
 System.debug(EvenIndexArray);
+*/

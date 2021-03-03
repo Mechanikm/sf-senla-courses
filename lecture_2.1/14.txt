@@ -1,19 +1,40 @@
-// Checking prime numbers for N
+// Checking prime numbers for n
 //https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D0%B1%D0%BE%D1%80_%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%B9
+Integer n=100; //Number for check
 
-Integer N=50; //Number for check
-
-List<integer> PNumbers = new List<Integer>();
-Integer i, i2;
-Boolean Check;
+List<integer> pNumbers = new List<Integer>();
+//old Integer i, i2;
+Boolean check;
 Double x; //for better method optimization
 
 //Check all even numbers (2 - will adding later)
-for (i = 1; i <= N; i=i+2) {
+for (Integer i = 1; i <= n; i = i + 2) {
+    x = math.sqrt(i); //old my mistake in past. There must be i, not x!
+    check = true;
+//Check for sqrt(n) only
+    for (Integer i2 = 2; i2 < x; i2++) {
+        if (math.mod(i, i2) == 0) {
+            check = false;
+            break;
+         }
+    }
+    if (check) {
+        pNumbers.add(i);
+        if (i == 1 && n >= 2) { //Add 2 if needed
+            pNumbers.add(2);
+        }
+    }
+}
+//Answer
+System.debug(pNumbers);
+
+/*old
+//Check all even numbers (2 - will adding later)
+for (Integer i = 1; i <= N; i=i+2) {
     x=math.sqrt(N);
     Check=True;
 //Check for sqrt(N) only (3 - will adding later)
-    for (i2 = 2; i2 < x; i2++) {
+    for (Integer i2 = 2; i2 < x; i2++) {
          if (math.mod(i, i2) == 0) {Check=false; break;}
     }
      If (Check==True) {PNumbers.add(i);
@@ -21,3 +42,4 @@ for (i = 1; i <= N; i=i+2) {
                       if (i==1&&N>=3) PNumbers.add(3);}}//Add 3 if needed
 //Answer
 system.debug(PNumbers);
+*/

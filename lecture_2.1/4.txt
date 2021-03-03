@@ -1,7 +1,13 @@
 //Multiplication table for n
 //You can choose any n
-Integer i, n=3;
-System.debug('Multiplication table for '+n);
-for (i=1;i<=10;i++) {
-    System.debug(n+' * '+i+' = '+(n*i));
+
+//old Integer i, n=3;
+//old System.debug('Multiplication table for '+n);
+//old for (i=1;i<=10;i++) {
+//old     System.debug(n+' * '+i+' = '+(n*i));
+
+Integer n=3;
+System.debug('Multiplication table for ' + n);
+for (Integer i = 1; i <= 10; i++) {
+    System.debug(n + ' * ' + i + ' = ' + (n * i));
 }

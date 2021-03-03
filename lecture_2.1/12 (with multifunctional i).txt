@@ -1,0 +1,33 @@
+//Creating map of sizes
+String text = ('Have you ever danced with the devil by the pale moonlight');
+
+Map <Integer, Integer> wordLenght = new Map <Integer, Integer>();
+List <String> textArray = new List<String>();//Array for words from string
+List <Integer> wLenghtArray = new List<Integer>();//Consist lenght of words
+Integer i = 0;
+Integer count = 0;
+Integer max = 0;
+textArray = text.split(' ');
+
+//Converting word array to lenght array, wLengtArray createn
+for (i = 0; i < textArray.size(); i++) {
+    wLenghtArray.add(textArray[i].split('').size());
+    if (textArray[i].split('').size() > max) {
+        max = textArray[i].split('').size();
+    }
+}
+wLenghtArray.sort();
+
+//Count and add to map
+for (i = 0; i < wLenghtArray.size() - 1; i++) {
+    count++;
+    if (wLenghtArray[i] < wLenghtArray[i + 1]) {
+        wordLenght.put(wLenghtArray[i],count); 
+     	count = 0;
+    }
+}
+//Especially for last element
+wordLenght.put(wLenghtArray[i],1);
+//I add a new constant for counting numbers
+for (i = 1; i <= max; i++) {
+    System.debug(i+' letters word(s) - ' + wordLenght.get(i));}

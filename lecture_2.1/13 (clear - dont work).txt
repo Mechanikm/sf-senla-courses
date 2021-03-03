@@ -1,0 +1,44 @@
+//Creating map of sizes
+String text = ('If you do not know where you are effffffwefwefe going any road can take you there');
+
+Map <Integer, List<String>> setWords = new Map <Integer, List<String>>();
+List <String> textArray = new List<String>();//Array for words from string
+List <String> juncArray = new List<String>();//Array for templates
+List <String> juncArray2 = new List<String>();//Array for templates (instead JuncArray.clear())
+List <Integer> lenghtArray = new List<Integer>();//Consist lenght of words
+List <Integer> shortArray = new List<Integer>();//Consist only different lenght of words
+Integer count=1;
+
+//Add string Text to array
+textArray = text.split(' ');
+
+//Converting word array to lenght array, LenghtArray createn
+for (Integer i = 0; i < textArray.size(); i++) {
+    lenghtArray.add(textArray[i].split('').size());
+}
+
+//Convert and zip array
+lenghtArray.sort();
+shortArray.add(lenghtArray[0]);
+
+for (Integer i = 1; i < lenghtArray.size(); i++) {
+    if (lenghtArray[i] > shortArray[shortArray.size() - 1]) {
+        shortArray.add(lenghtArray[i]);
+        count++;
+    }
+}
+//Add data to map
+for (Integer i = 0; i < count; i++) {
+    for (Integer i2 = 0; i2 < textArray.size(); i2++) {
+        if (shortArray[i] == textArray[i2].split('').size()) {
+            juncArray.add(textArray[i2]);
+        }
+//     System.debug('i='+i+' i2='+i2+' Len='+ ShortArray[i]+' JA='+JuncArray);
+    }
+    setWords.put(shortArray[i],juncArray);
+//    System.debug('Mi='+i+' Mi2='+i2+' MSW='+SetWords);
+    juncArray.clear();
+     //new List works, but WHY?
+    //juncArray = new List<String>();
+}
+System.debug('SW-' + SetWords);

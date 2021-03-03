@@ -1,7 +1,16 @@
 //The first and last words from a string Text
+String text = ('May the force be with you');
+
+List <String> textArray = text.split(' ');
+
+System.debug('The first word is - ' + textArray[0]);
+System.debug('The last0 word is - ' + textArray[textArray.size() - 1]);
+
+/* old
 String Text = ('May the force be with you');
 
 List <String> TextArray = Text.split(' ');
 
 System.debug('The first word is - '+TextArray[0]);
 System.debug('The last word is - '+TextArray[TextArray.size()-1]);
+*/

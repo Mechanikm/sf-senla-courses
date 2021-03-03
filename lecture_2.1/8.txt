@@ -1,6 +1,22 @@
 //Array for sorting
 List <Integer> arrayUnsorted = new List <Integer>{1,2,3,4,5,6,7,8,9,10,99,98,97,96,95,94,93,92,91,90};
 
+List <Integer> arrayOdd = new List <Integer>();
+List <Integer> arrayEven = new List <Integer>();
+
+for (Integer i = 0; i < arrayUnsorted.size(); i++) {
+    If (math.mod(arrayUnsorted[i],2) == 0)  {arrayEven.add(arrayUnsorted[i]);
+   } else {arrayOdd.add(arrayUnsorted[i]);}
+}
+
+//Sorted arrays
+System.debug('Odd array - '+ arrayOdd);
+System.debug('Even array - '+ arrayEven);
+
+/* old
+//Array for sorting
+List <Integer> arrayUnsorted = new List <Integer>{1,2,3,4,5,6,7,8,9,10,99,98,97,96,95,94,93,92,91,90};
+
 //Array for odd numbers
 List <Integer> arrayOdd = new List <Integer>();
 
@@ -17,3 +33,4 @@ for (integer i=0; i<arrayUnsorted.size();i++) {
 //Sorted arrays
 System.debug('Odd array - '+ ArrayOdd);
 System.debug('Even array - '+ ArrayEven);
+*/
