@@ -33,7 +33,7 @@ for (Integer i = 0; i < count; i++) {
         }
     }
     setWords.put(shortArray[i],juncArray);
-    juncArray=new List<String>();
+    juncArray = new List<String>();
 }
 
 System.debug('Map - ' + setWords);
