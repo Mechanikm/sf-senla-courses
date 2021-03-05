@@ -1,14 +1,17 @@
 // Fibonacci until N
 
 //old Integer N=1000, fib, fibprev, temp;
-Integer N=1000, fib, fibprev, temp;
+Integer n = 1000;
+Integer fib;
+Integer fibprev;
+Integer  temp;
 List <Integer> Fibonacci = new List <Integer>();
 
 fibprev = 0;
-fib=1;
-while (fib<=N) {
+fib = 1;
+while (fib <= n) {
 	Fibonacci.add(fib);
-	temp = fibprev+fib;
+	temp = fibprev + fib;
 	fibprev = fib;
 	fib = temp;
 	}
