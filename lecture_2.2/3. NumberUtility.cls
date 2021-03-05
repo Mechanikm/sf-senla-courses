@@ -7,7 +7,7 @@ public class NumberUtility {
         
         //Check all even numbers (2 - will adding later)
         for (Integer i = 1; i <= n; i = i + 2) {
-            x = math.sqrt(i); //old my mistake in past. There must be i, not x!
+            x = math.sqrt(i); //old my mistake in past. There must be i, not n!
             check = true;
             //Check for sqrt(n) only
             for (Integer i2 = 2; i2 < x; i2++) {
