@@ -1,4 +1,4 @@
-public class NumberUtility3 {
+public class NumberUtility {
     public static List<Integer> primeNumbers (Integer n) {
         List<integer> pNumbers = new List<Integer>();
         //old Integer i, i2;
