@@ -1,31 +1,31 @@
 public class NumberUtility {
     public static List<Integer> primeNumbers (Integer n) {
         List<integer> pNumbers = new List<Integer>();
-        //old Integer i, i2;
         Boolean check;
-        Double x; //for better method optimization
+        Integer x; //for better optimization
+        Integer x2 = 1; //for better optimization
         
-        //Check all even numbers (2 - will adding later)
-        for (Integer i = 1; i <= n; i = i + 2) {
-            x = math.sqrt(i); //old my mistake in past. There must be i, not n!
+        for (Integer i = 1; i <= n; i = i + x2) {
+            if (i == 3 && N >= 5) {
+                x2 = 2;//do not check all even numbers
+            }
+            x = math.round(math.sqrt(i));
             check = true;
-            //Check for sqrt(n) only
-            for (Integer i2 = 2; i2 < x; i2++) {
+            //Check no more than sqrt(n)
+            for (Integer i2 = 2; i2 <= x; i2++) {
                 if (math.mod(i, i2) == 0) {
                     check = false;
-                    break;
+                    i2 = x;//for fast finish this cycle:)
                 }
             }
-    if (check) {
-        pNumbers.add(i);
-        if (i == 1 && n >= 2) { //Add 2 if needed
-            pNumbers.add(2);
+            if (check) {
+                pNumbers.add(i);
+            }
         }
+        //Answer
+        return pNumbers;
     }
-}
-//Answer
-return pNumbers;
-    }
+    
     public static List<Integer> FibonacciNumbers (Integer n) {
         Integer fib;
         Integer fibprev;
@@ -42,6 +42,7 @@ return pNumbers;
         }
         return(Fibonacci);
     }
+    
     public static Boolean isPalindrom (Long n) {
         List <String> norm = new List <String>();
         List <String> back = new List <String>();
@@ -51,7 +52,7 @@ return pNumbers;
         
         //Reverse Array
         for (Integer i = norm.size() - 1; i >= 0; i--) {
-        back.add(norm[i]);
+            back.add(norm[i]);
         }
         //old Palindromity checking
         return(norm == back);
