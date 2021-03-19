@@ -1,4 +1,5 @@
 public inherited sharing class FligfhtValidation {
+   
     public static void checkFlightAge(List<Flight__c> newFlight) {
         
         for (Flight__c fl :newFlight) {

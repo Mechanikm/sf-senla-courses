@@ -1,4 +1,5 @@
 public class NumberUtility {
+   
     public static List<Integer> primeNumbers (Integer n) {
         List<integer> pNumbers = new List<Integer>();
         Boolean check;
@@ -29,7 +30,7 @@ public class NumberUtility {
     public static List<Integer> FibonacciNumbers (Integer n) {
         Integer fib;
         Integer fibprev;
-        Integer  temp;
+        Integer temp;
         List <Integer> Fibonacci = new List <Integer>();
         
         fibprev = 0;
