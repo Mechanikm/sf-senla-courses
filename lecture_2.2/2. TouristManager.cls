@@ -57,4 +57,23 @@ public inherited sharing class TouristManager {
         }
         return filtered;
     }
+    
+    public static void filterNameMail (List<Tourist__c> newTourists) {//Tourists with curtain name and email
+        List<Tourist__c> allTourists = new List<Tourist__c>(); 
+        List<Tourist__c> forUpdate = new List<Tourist__c>();
+        allTourists = [SELECT 	Name, 
+                       Tourists_email__c, 
+                       IsDuplicate__c
+                       FROM 	Tourist__c];
+        
+        for (Tourist__c base :allTourists) {
+            for (Tourist__c nt :newTourists) {
+                if ((base.Name == nt.Name) && (base.Tourists_email__c == nt.Tourists_email__c)) {
+                    nt.isDuplicate__c = true;
+                }
+                forUpdate.add(nt);
+            }
+        }
+        update forUpdate;
+    }
 }
