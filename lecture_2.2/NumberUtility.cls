@@ -1,6 +1,6 @@
 public class NumberUtility {
-   
-    public static List<Integer> primeNumbers (Integer n) {
+    
+    public static List<Integer> getprimeNumbers (Integer n) {
         List<integer> pNumbers = new List<Integer>();
         Boolean check;
         Integer x; //for better optimization
@@ -23,11 +23,10 @@ public class NumberUtility {
                 pNumbers.add(i);
             }
         }
-        //Answer
         return pNumbers;
     }
     
-    public static List<Integer> FibonacciNumbers (Integer n) {
+    public static List<Integer> getFibonacciNumbers (Integer n) {
         Integer fib;
         Integer fibprev;
         Integer temp;
@@ -51,11 +50,9 @@ public class NumberUtility {
         //Transform Long to Array
         norm = (String.ValueOf(n).split(''));
         
-        //Reverse Array
         for (Integer i = norm.size() - 1; i >= 0; i--) {
             back.add(norm[i]);
         }
-        //old Palindromity checking
         return(norm == back);
     }
 }
