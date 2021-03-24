@@ -1,3 +1,15 @@
-trigger TouristTrigger on Tourist__c (before insert) {
-    TouristService.markDuplicates(trigger.new);
+trigger TouristTrigger on Tourist__c (before insert, after update) {
+    if (!TouristTriggerHandler.wasExecuted) {
+        TouristTriggerHandler.wasExecuted = true;
+
+        switch on Trigger.operationType {
+            when BEFORE_INSERT {
+                TouristService.markDuplicates(trigger.new);
+            }    
+            
+            when AFTER_UPDATE {
+                TouristTriggerHandler.getfilterbyActivity(trigger.newMap);
+            }
+        } 
+    }
 }
