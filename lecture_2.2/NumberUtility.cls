@@ -1,22 +1,22 @@
 public class NumberUtility {
     
-    public static List<Integer> getprimeNumbers (Integer n) {
+    public static List<Integer> getprimeNumbers (Integer num) {
         List<integer> pNumbers = new List<Integer>();
         Boolean check;
-        Integer x; //for better optimization
-        Integer x2 = 1; //for better optimization
+        Integer x;
+        Integer x2 = 1;
         
-        for (Integer i = 1; i <= n; i = i + x2) {
-            if (i == 3 && N >= 5) {
-                x2 = 2;//do not check all even numbers
+        for (Integer i = 1; i <= num; i = i + x2) {
+            if (i == 3 && num >= 5) {
+                x2 = 2;
             }
             x = math.round(math.sqrt(i));
             check = true;
-            //Check no more than sqrt(n)
+            
             for (Integer i2 = 2; i2 <= x; i2++) {
                 if (math.mod(i, i2) == 0) {
                     check = false;
-                    i2 = x;//for fast finish this cycle:)
+                    i2 = x;
                 }
             }
             if (check) {
@@ -26,7 +26,7 @@ public class NumberUtility {
         return pNumbers;
     }
     
-    public static List<Integer> getFibonacciNumbers (Integer n) {
+    public static List<Integer> getFibonacciNumbers (Integer num) {
         Integer fib;
         Integer fibprev;
         Integer temp;
@@ -34,7 +34,7 @@ public class NumberUtility {
         
         fibprev = 0;
         fib = 1;
-        while (fib <= n) {
+        while (fib <= num) {
             Fibonacci.add(fib);
             temp = fibprev + fib;
             fibprev = fib;
@@ -43,16 +43,15 @@ public class NumberUtility {
         return(Fibonacci);
     }
     
-    public static Boolean isPalindrom (Long n) {
-        List <String> norm = new List <String>();
-        List <String> back = new List <String>();
+    public static Boolean isPalindrom (Long num) {
+        List <String> forward = new List <String>();
+        List <String> backward = new List <String>();
         
-        //Transform Long to Array
-        norm = (String.ValueOf(n).split(''));
+        forward = (String.ValueOf(num).split(''));
         
-        for (Integer i = norm.size() - 1; i >= 0; i--) {
-            back.add(norm[i]);
+        for (Integer i = forward.size() - 1; i >= 0; i--) {
+            backward.add(forward[i]);
         }
-        return(norm == back);
+        return(forward == backward);
     }
 }

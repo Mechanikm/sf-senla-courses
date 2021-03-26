@@ -76,32 +76,35 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getfilterbyNameMail (List<Tourist__c> newTourists) {
+    public static List<Tourist__c> getfilterbyNameEmail (List<Tourist__c> newTourists) {
         if (newTourists == null) {
             return new List<Tourist__c>();
         }
-        List<Tourist__c> filterNameMail = new List<Tourist__c>();
+        List<Tourist__c> filterEmailName = new List<Tourist__c>();
         List<Tourist__c> filtered = new List<Tourist__c>();        
+        Set<String> emails = new Set<String>();
+        Set<String> names = new Set<String>();
         
-        for (Tourist__c tr :newTourists) {
-            filterNameMail = [
-                SELECT 	Name, 
-                Tourists_email__c, 
-                IsDuplicate__c
-                FROM 	Tourist__c
-                WHERE (Tourist__c.Tourists_email__c = :tr.Tourists_email__c 
-                       AND Tourist__c.Name = :tr.Name)
-            ];
-        }
-        if (filterNameMail != null) {
-            for (Tourist__c fnm :filterNameMail) {
-                for (Tourist__c nt :newTourists) {
-                    if (fnm.Tourists_email__c == nt.Tourists_email__c 
-                        && fnm.Name == nt.Name) {
-                            nt.IsDuplicate__c = true;
-                        }
-                    filtered.add(nt);
-                }
+        for (Tourist__c tourist :newTourists) {
+            emails.add(Tourist.Tourists_email__c);
+            names.add(Tourist.Name);
+        }    
+        
+        filterEmailName = [
+            SELECT 	Name, 
+            Tourists_email__c, 
+            IsDuplicate__c
+            FROM 	Tourist__c
+            WHERE (Tourist__c.Tourists_email__c IN :emails
+                   AND Tourist__c.Name IN :names)
+        ];
+        
+        for (Tourist__c tourist :filterEmailName) {
+            for (Tourist__c touristInc :newTourists) {
+                If (tourist.Tourists_email__c == touristInc.Tourists_email__c
+                    && tourist.Name == touristInc.Name) {
+                        filtered.add(touristInc);
+                    }
             }
         }
         return filtered;
