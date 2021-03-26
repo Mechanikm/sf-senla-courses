@@ -6,8 +6,8 @@ trigger TouristTrigger on Tourist__c (before insert, after update) {
         }    
 
         when AFTER_UPDATE {
-            if (TouristTriggerHandler.wasExecuted) {
-                TouristTriggerHandler.wasExecuted = false;
+            if (!TouristTriggerHandler.wasExecuted) {
+                TouristTriggerHandler.wasExecuted = true;
             TouristTriggerHandler.getfilterbyActivity(trigger.newMap);
             }
         } 
