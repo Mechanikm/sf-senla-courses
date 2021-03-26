@@ -1,5 +1,5 @@
 public class TouristTriggerHandler {
-    private static Boolean wasExecuted;
+    public static Boolean wasExecuted;
     
     public static List<Flight__c> getfilterbyActivity (Map<Id, Tourist__c> newTourists) {
         if (newTourists == null) {
