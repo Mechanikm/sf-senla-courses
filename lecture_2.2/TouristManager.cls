@@ -1,7 +1,7 @@
 public inherited sharing class TouristManager {
     
     public static List<Tourist__c> getFilterByName (String nameForSearch) {
-        if (nameForSearch == null) {
+        if (String.isBlank(nameForSearch)) {
             return new List<Tourist__c>();
         }
         String extNameForSearch = '%' + nameForSearch + '%';
@@ -31,7 +31,7 @@ public inherited sharing class TouristManager {
             return new List<Tourist__c>();
         }
         List<JunctionTouristFlight__c> filterFlightYear = [
-            SELECT  Tourist__r.Name, 
+            SELECT 	Tourist__r.Name, 
             Tourist__r.Age__c 
             FROM JunctionTouristFlight__c 
             WHERE CALENDAR_YEAR(Flight__r.Flight_Date__c) = :yearForSearch
@@ -77,7 +77,7 @@ public inherited sharing class TouristManager {
     }
     
     public static List<Tourist__c> getFilterByNameEmail (List<Tourist__c> newTourists) {
-        if (newTourists == null) {
+        if (newTourists == null || newTourists.isEmpty()) {
             return new List<Tourist__c>();
         }
         List<Tourist__c> filterEmailName = new List<Tourist__c>();
@@ -91,10 +91,10 @@ public inherited sharing class TouristManager {
         }    
         
         filterEmailName = [
-            SELECT  Name, 
+            SELECT 	Name, 
             Tourists_email__c, 
             IsDuplicate__c
-            FROM    Tourist__c
+            FROM 	Tourist__c
             WHERE (Tourist__c.Tourists_email__c IN :emails
                    AND Tourist__c.Name IN :names)
         ];
