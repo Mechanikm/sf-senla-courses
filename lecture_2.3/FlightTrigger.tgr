@@ -1,4 +1,0 @@
-trigger FlightTrigger on Flight__c (before insert) {
-
-    FlightTriggerHandler.checkFlightAge(Trigger.newMap);
-}
