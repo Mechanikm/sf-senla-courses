@@ -1,6 +1,6 @@
 public inherited sharing class TouristManager {
     
-    public static List<Tourist__c> getfilterbyName (String nameForSearch) {
+    public static List<Tourist__c> getFilterByName (String nameForSearch) {
         if (String.isBlank(nameForSearch)) {
             return new List<Tourist__c>();
         }
@@ -14,7 +14,7 @@ public inherited sharing class TouristManager {
         return filterName;
     }
     
-    public static List<Tourist__c> getfilterbyAge (Integer ageForSearch) {
+    public static List<Tourist__c> getFilterByAge (Integer ageForSearch) {
         if (ageForSearch == null || ageForSearch <= 0) {
             return new List<Tourist__c>();
         }
@@ -26,7 +26,7 @@ public inherited sharing class TouristManager {
         return filterAge;
     }
     
-    public static List<Tourist__c> getfilterbyFlightYear (Integer yearForSearch) {
+    public static List<Tourist__c> getFilterByFlightYear (Integer yearForSearch) {
         if (yearForSearch == null || yearForSearch <= 0) {
             return new List<Tourist__c>();
         }
@@ -44,7 +44,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getfilterbyExistingFlight () {
+    public static List<Tourist__c> getFilterByExistingFlight () {
         List<JunctionTouristFlight__c> filterExistingFlight = [
             SELECT Tourist__r.Name, 
             Tourist__r.Age__c, 
@@ -61,7 +61,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getfilterbyWithoutFlight() {
+    public static List<Tourist__c> getFilterByWithoutFlight() {
         List<JunctionTouristFlight__c> filterWithoutFlight = [
             SELECT Tourist__r.Name, 
             Tourist__r.Age__c
@@ -76,7 +76,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getfilterbyNameEmail (List<Tourist__c> newTourists) {
+    public static List<Tourist__c> getFilterByNameEmail (List<Tourist__c> newTourists) {
         if (newTourists == null || newTourists.isEmpty()) {
             return new List<Tourist__c>();
         }
