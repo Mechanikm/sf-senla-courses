@@ -1,6 +1,6 @@
 public inherited sharing class TouristManager {
     
-    public static List<Tourist__c> getFilterByName (String nameForSearch) {
+    public static List<Tourist__c> getfilterbyName (String nameForSearch) {
         if (String.isBlank(nameForSearch)) {
             return new List<Tourist__c>();
         }
@@ -14,7 +14,7 @@ public inherited sharing class TouristManager {
         return filterName;
     }
     
-    public static List<Tourist__c> getFilterByAge (Integer ageForSearch) {
+    public static List<Tourist__c> getfilterbyAge (Integer ageForSearch) {
         if (ageForSearch == null || ageForSearch <= 0) {
             return new List<Tourist__c>();
         }
@@ -26,7 +26,7 @@ public inherited sharing class TouristManager {
         return filterAge;
     }
     
-    public static List<Tourist__c> getFilterByFlightYear (Integer yearForSearch) {
+    public static List<Tourist__c> getfilterbyFlightYear (Integer yearForSearch) {
         if (yearForSearch == null || yearForSearch <= 0) {
             return new List<Tourist__c>();
         }
@@ -44,7 +44,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getFilterByExistingFlight () {
+    public static List<Tourist__c> getfilterbyExistingFlight () {
         List<JunctionTouristFlight__c> filterExistingFlight = [
             SELECT Tourist__r.Name, 
             Tourist__r.Age__c, 
@@ -61,7 +61,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getFilterByWithoutFlight() {
+    public static List<Tourist__c> getfilterbyWithoutFlight() {
         List<JunctionTouristFlight__c> filterWithoutFlight = [
             SELECT Tourist__r.Name, 
             Tourist__r.Age__c
@@ -76,7 +76,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getFilterByNameEmail (List<Tourist__c> newTourists) {
+    public static List<Tourist__c> getfilterbyNameEmail (List<Tourist__c> newTourists) {
         if (newTourists == null || newTourists.isEmpty()) {
             return new List<Tourist__c>();
         }
@@ -110,7 +110,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getFilterById (Set<Id> idTourists) {
+        public static List<Tourist__c> getFilterById (Set<Id> idTourists) {
         List<Tourist__c> matchTourists = new List<Tourist__c>();
         matchTourists = [
             SELECT Birthdate__c
@@ -118,5 +118,5 @@ public inherited sharing class TouristManager {
             WHERE Id IN :idTourists
         ];
         return matchTourists;
-    }
+    } 
 }
