@@ -1,7 +1,7 @@
 public class NumberUtility {
     
-    public static List<Integer> getprimeNumbers (Integer num) {
-        List<integer> pNumbers = new List<Integer>();
+    public static List<Integer> getPrimeNumbers (Integer num) {
+        List<Integer> pNumbers = new List<Integer>();
         Boolean check;
         Integer x;
         Integer x2 = 1;
