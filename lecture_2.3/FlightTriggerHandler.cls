@@ -1,6 +1,6 @@
 public inherited sharing class FlightTriggerHandler {
     
-    public static void checkFlightAge(List<Flight__c> newFlights) {
+    public static void onBeforeInsert(List<Flight__c> newFlights) {
         Set<Id> touristIds = new Set<Id>();
         Set<Id> tripIds = new Set<Id>();
         

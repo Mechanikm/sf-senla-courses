@@ -1,7 +1,7 @@
 public class TouristTriggerHandler {
     public static Boolean wasExecuted;
     
-    public static List<Flight__c> getFilterByActivity (Map<Id, Tourist__c> newTourists) {
+    public static List<Flight__c> onAfterUpdate (Map<Id, Tourist__c> newTourists) {
         if (newTourists == null || newTourists.isEmpty()) {
             return new List<Flight__c>();
         }
