@@ -101,7 +101,7 @@ public inherited sharing class TouristManager {
         
         for (Tourist__c tourist :filterEmailName) {
             for (Tourist__c touristInc :newTourists) {
-                If (tourist.Tourists_email__c == touristInc.Tourists_email__c
+                if (tourist.Tourists_email__c == touristInc.Tourists_email__c
                     && tourist.Name == touristInc.Name) {
                         filtered.add(touristInc);
                     }
