@@ -109,14 +109,4 @@ public inherited sharing class TouristManager {
         }
         return filtered;
     }
-    
-    public static List<Tourist__c> getFilterById (Set<Id> idTourists) {
-        List<Tourist__c> matchTourists = new List<Tourist__c>();
-        matchTourists = [
-            SELECT Birthdate__c
-            FROM Tourist__c
-            WHERE Id IN :idTourists
-        ];
-        return matchTourists;
-    }
 }
