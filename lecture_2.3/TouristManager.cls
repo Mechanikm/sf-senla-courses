@@ -31,7 +31,7 @@ public inherited sharing class TouristManager {
             return new List<Tourist__c>();
         }
         List<JunctionTouristFlight__c> filterFlightYear = [
-            SELECT 	Tourist__r.Name, 
+            SELECT Tourist__r.Name, 
             Tourist__r.Age__c 
             FROM JunctionTouristFlight__c 
             WHERE CALENDAR_YEAR(Flight__r.Flight_Date__c) = :yearForSearch
@@ -80,7 +80,6 @@ public inherited sharing class TouristManager {
         if (newTourists == null || newTourists.isEmpty()) {
             return new List<Tourist__c>();
         }
-        List<Tourist__c> filterEmailName = new List<Tourist__c>();
         List<Tourist__c> filtered = new List<Tourist__c>();        
         Set<String> emails = new Set<String>();
         Set<String> names = new Set<String>();
@@ -89,28 +88,18 @@ public inherited sharing class TouristManager {
             emails.add(Tourist.Tourists_email__c);
             names.add(Tourist.Name);
         }    
-        
-        filterEmailName = [
-            SELECT 	Name, 
+        filtered = [
+            SELECT Name, 
             Tourists_email__c, 
             IsDuplicate__c
-            FROM 	Tourist__c
+            FROM Tourist__c
             WHERE (Tourist__c.Tourists_email__c IN :emails
                    AND Tourist__c.Name IN :names)
         ];
-        
-        for (Tourist__c tourist :filterEmailName) {
-            for (Tourist__c touristInc :newTourists) {
-                if (tourist.Tourists_email__c == touristInc.Tourists_email__c
-                    && tourist.Name == touristInc.Name) {
-                        filtered.add(touristInc);
-                    }
-            }
-        }
         return filtered;
     }
     
-        public static List<Tourist__c> getFilterById (Set<Id> idTourists) {
+    public static List<Tourist__c> getFilterById (Set<Id> idTourists) {
         List<Tourist__c> matchTourists = new List<Tourist__c>();
         matchTourists = [
             SELECT Birthdate__c
@@ -119,4 +108,14 @@ public inherited sharing class TouristManager {
         ];
         return matchTourists;
     } 
+    
+    public static List<Tourist__c> getInactiveTouristsWithFlights (Map<Id, Tourist__c> newTourists) {
+        List<Tourist__c> touristsWithFlights = [
+            SELECT Active__c,
+            (SELECT Id FROM Flights__r)
+            FROM Tourist__c
+            WHERE Tourist__c.Active__c = false AND Id IN :newTourists.keyset()
+        ];
+        return touristsWithFlights;
+    }
 }

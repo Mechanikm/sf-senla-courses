@@ -1,31 +1,27 @@
 public class TouristTriggerHandler {
     public static Boolean wasExecuted;
     
-    public static List<Flight__c> onAfterUpdate (Map<Id, Tourist__c> newTourists) {
+    public static void onAfterUpdate (Map<Id, Tourist__c> newTourists) {
         if (newTourists == null || newTourists.isEmpty()) {
-            return new List<Flight__c>();
+            return;
         }
-        List<Tourist__c> touristsWithFlights = [
-            SELECT Active__c,
-            (SELECT Id FROM Flights__r)
-            FROM Tourist__c
-            WHERE Id IN :newTourists.keyset()
-        ];
-        
+        List<Tourist__c> touristsWithFlights = TouristManager.getInactiveTouristsWithFlights(newTourists);
         List<Flight__c> filtered = new List<Flight__c>();
-        for (Tourist__c tr :touristsWithFlights) {
-            for (Flight__c fl :tr.Flights__r) {
-                fl.StatusT__c = Constants.FLIGHT_STATUS_DECLINED;
-                filtered.add(fl);
+        
+        for (Tourist__c tourist :touristsWithFlights) {
+            
+            for (Flight__c flight :tourist.Flights__r) {
+                flight.StatusT__c = Constants.FLIGHT_STATUS_DECLINED;
+                filtered.add(flight);
             }
         }
-        return filtered;
+        update filtered;
     }
-
+    
     public static void onBeforeInsert(List<Tourist__c> newTourists) {
         if (newTourists == null || newTourists.isEmpty()) return;
-        List<Tourist__c> filtered = new List<Tourist__c>();
-      
+        List<Tourist__c> filteredByNameEmail = new List<Tourist__c>();
+        
         filteredByNameEmail = TouristManager.getFilterByNameEmail(newTourists);
         if (filteredByNameEmail == null || filteredByNameEmail.isEmpty()) return;
         
