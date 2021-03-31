@@ -15,10 +15,27 @@ public class TouristTriggerHandler {
         List<Flight__c> filtered = new List<Flight__c>();
         for (Tourist__c tr :touristsWithFlights) {
             for (Flight__c fl :tr.Flights__r) {
-                fl.StatusT__c = 'Declined';
+                fl.StatusT__c = Constants.FLIGHT_STATUS_DECLINED;
                 filtered.add(fl);
             }
         }
         return filtered;
+    }
+
+    public static void onBeforeInsert(List<Tourist__c> newTourists) {
+        if (newTourists == null || newTourists.isEmpty()) return;
+        List<Tourist__c> filtered = new List<Tourist__c>();
+      
+        filteredByNameEmail = TouristManager.getFilterByNameEmail(newTourists);
+        if (filteredByNameEmail == null || filteredByNameEmail.isEmpty()) return;
+        
+        for (Tourist__c tourist :filteredByNameEmail) {
+            
+            for (Tourist__c touristInc :newTourists) {
+                if (tourist.Tourists_email__c == touristInc.Tourists_email__c && tourist.Name == touristInc.Name) {
+                    tourist.IsDuplicate__c = true;
+                }
+            }
+        }
     }
 }

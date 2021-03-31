@@ -1,5 +1,12 @@
 public inherited sharing class Constants {
-
-    public static final String FLIGHT_DEPART = 'The flight departed';
-    public static final String YOUNG_AGE  = 'The tourist is so young';
+//Errors
+    public static final String ERROR_FLIGHT_DEPARTED = 'The flight departed';
+    public static final String ERROR_YOUNG_AGE = 'The tourist is so young';
+//Exceptions
+    public static final String FIRST_CUSTOM_EXCEPTION = 'First exception';
+    public static final String FINALLY_OK_CUSTOM_EXCEPTION = 'All right! Not any mistakes :)';
+//Nums
+    public static final Decimal AVERAGE_DAYS_IN_YEAR = 365.25;
+//Messages
+    public static final String FLIGHT_STATUS_DECLINED = 'Declined';
 }

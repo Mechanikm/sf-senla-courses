@@ -18,10 +18,10 @@ public inherited sharing class FlightTriggerHandler {
             Tourist__c tourist = touristMap.get(flight.Tourist__c);
             Trip__c trip = tripMap.get(flight.Tourist__c);
             if (trip.StartDate__c < Date.Today()) {
-                flight.trip__c.addError(Constants.FLIGHT_DEPART);
-                if (((trip.StartDate__c.daysBetween(tourist.Birthdate__c)) / 365.25) 
+                flight.trip__c.addError(Constants.ERROR_FLIGHT_DEPARTED);
+                if (((trip.StartDate__c.daysBetween(tourist.Birthdate__c)) / Constants.AVERAGE_DAYS_IN_YEAR) 
                     < trip.MinimumAge__c) {
-                        flight.Tourist__c.addError(Constants.YOUNG_AGE);
+                        flight.Tourist__c.addError(Constants.ERROR_YOUNG_AGE);
                     }
                 forUpdate.add(flight);
             }
