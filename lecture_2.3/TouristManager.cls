@@ -44,7 +44,7 @@ public inherited sharing class TouristManager {
         return filtered;
     }
     
-    public static List<Tourist__c> getFilterByExistingFlight () {
+    public static List<Tourist__c> getFilterByExistingFlight() {
         List<JunctionTouristFlight__c> filterExistingFlight = [
             SELECT Tourist__r.Name, 
             Tourist__r.Age__c, 
@@ -100,6 +100,9 @@ public inherited sharing class TouristManager {
     }
     
     public static List<Tourist__c> getFilterById (Set<Id> idTourists) {
+        if (idTourists == null || idTourists.isEmpty()) {
+            return new List<Tourist__c>();
+        }
         List<Tourist__c> matchTourists = new List<Tourist__c>();
         matchTourists = [
             SELECT Birthdate__c
@@ -110,6 +113,9 @@ public inherited sharing class TouristManager {
     } 
     
     public static List<Tourist__c> getInactiveTouristsWithFlights (Map<Id, Tourist__c> newTourists) {
+        if (newTourists == null || newTourists.isEmpty()) {
+            return new List<Tourist__c>();
+        }
         List<Tourist__c> touristsWithFlights = [
             SELECT Active__c,
             (SELECT Id FROM Flights__r)

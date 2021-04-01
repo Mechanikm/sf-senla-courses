@@ -8,6 +8,9 @@ public inherited sharing class TouristService {
       
         List<Tourist__c> filteredByNameEmail = new List<Tourist__c>();
         filteredByNameEmail = TouristManager.getFilterByNameEmail(newTourists);
+        if (newTourists.isEmpty()) {
+            return;
+        }
         
         if (newTourists != null) {
             for (Tourist__c tourist :newTourists) {

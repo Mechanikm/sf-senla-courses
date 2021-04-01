@@ -6,6 +6,9 @@ public class TouristTriggerHandler {
             return;
         }
         List<Tourist__c> touristsWithFlights = TouristManager.getInactiveTouristsWithFlights(newTourists);
+        if (touristsWithFlights.isEmpty()) {
+            return;
+        }
         List<Flight__c> filtered = new List<Flight__c>();
         
         for (Tourist__c tourist :touristsWithFlights) {
@@ -23,7 +26,7 @@ public class TouristTriggerHandler {
         List<Tourist__c> filteredByNameEmail = new List<Tourist__c>();
         
         filteredByNameEmail = TouristManager.getFilterByNameEmail(newTourists);
-        if (filteredByNameEmail == null || filteredByNameEmail.isEmpty()) return;
+        if (filteredByNameEmail.isEmpty()) return;
         
         for (Tourist__c tourist :filteredByNameEmail) {
             

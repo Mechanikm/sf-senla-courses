@@ -12,8 +12,7 @@ public inherited sharing class FlightTriggerHandler {
         Map<Id, Tourist__c> touristMap = new Map<Id, Tourist__c>(tourists);
         List<Trip__c> trips = TripManager.getFilterById(tripIds);
         Map<Id, Trip__c> tripMap = new Map<Id, Trip__c>(trips);
-        List<Flight__c> forUpdate = new List<Flight__c>();
-        
+             
         for (Flight__c flight :newFlights) {
             Tourist__c tourist = touristMap.get(flight.Tourist__c);
             Trip__c trip = tripMap.get(flight.Tourist__c);
