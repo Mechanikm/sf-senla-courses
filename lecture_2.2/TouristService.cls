@@ -8,16 +8,20 @@ public inherited sharing class TouristService {
       
         List<Tourist__c> filteredByNameEmail = new List<Tourist__c>();
         filteredByNameEmail = TouristManager.getFilterByNameEmail(newTourists);
-        if (newTourists.isEmpty()) {
+        if (filteredByNameEmail.isEmpty()) {
             return;
         }
         
-        if (newTourists != null) {
-            for (Tourist__c tourist :newTourists) {
-                tourist.IsDuplicate__c = true;
-                filtered.add(tourist);
+        for (Tourist__c tourist :filteredByNameEmail) {
+            
+            for (Tourist__c touristInc :newTourists) {
+                if (tourist.Tourists_email__c == touristInc.Tourists_email__c && tourist.Name == touristInc.Name) {
+                    tourist.IsDuplicate__c = true;
+                    filtered.add(tourist);
+                }
             }
         }
+           
         update filtered;
     }
 }
