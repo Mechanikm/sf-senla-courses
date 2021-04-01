@@ -4,41 +4,20 @@ public inherited sharing class ExceptionsPlayground {
     public class CustomException extends BaseException {}
     
     public static void generateCustomException() {
-        try {
-            throw new CustomException(Constants.FIRST_CUSTOM_EXCEPTION);
-        } catch (BaseException e) {
-            System.debug(e.getMessage());
-        }
+        throw new CustomException(Constants.FIRST_CUSTOM_EXCEPTION);
     } 
     
     public static void generateRegularException() {
-        try {
-            Integer i = 1/0;
-        } catch (Exception e) {
-            System.debug(e.getMessage());
-        } 
+        Integer i = 1/0;
     }
     
     public static void handleExceptions() {
-        try {
-            throw new CustomException(Constants.FIRST_CUSTOM_EXCEPTION);
-        } catch (BaseException e) {
-            System.debug(e.getMessage());
-        }
-        try {
-            Integer i = 1/0;
-        } catch (Exception e) {
-            System.debug(e.getMessage());
-        } 
-    }
-    
-    public static void stopExceptions() {
-        try {
-            Integer i = 1/0;
-        } catch (Exception e) {
-
-        } finally {
-            System.debug(Constants.FINALLY_OK_CUSTOM_EXCEPTION);
-        } 
+        try {generateCustomException();
+             generateRegularException();
+            } catch (BaseException e) {
+            } catch (Exception e) {
+            } finally {
+                System.debug(Constants.FINALLY_OK_CUSTOM_EXCEPTION);
+            } 
     }
 }
