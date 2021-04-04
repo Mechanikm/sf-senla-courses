@@ -2,14 +2,15 @@ Trigger TouristTrigger on Tourist__c (before insert, after update) {
 
     switch on Trigger.operationType {
         when BEFORE_INSERT {
-            TouristTriggerHandler.onBeforeInsert(trigger.new);
+            TouristTriggerHandler.onBeforeInsert(Trigger.new);
         }    
 
         when AFTER_UPDATE {
             if (!TouristTriggerHandler.wasExecuted) {
                 TouristTriggerHandler.wasExecuted = true;
-            TouristTriggerHandler.onAfterUpdate(trigger.newMap);
+            TouristTriggerHandler.onAfterUpdate(Trigger.newMap);
             }
         } 
     }
 }
+//Trick for change to Capital letter

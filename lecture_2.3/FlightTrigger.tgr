@@ -6,3 +6,4 @@ Trigger FlightTrigger on Flight__c (before insert) {
         }
     }
 }
+//Trick for change to Capital letter
