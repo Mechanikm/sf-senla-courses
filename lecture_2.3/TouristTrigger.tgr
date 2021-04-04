@@ -13,4 +13,3 @@ Trigger TouristTrigger on Tourist__c (before insert, after update) {
         } 
     }
 }
-//Trick for change to Capital letter
