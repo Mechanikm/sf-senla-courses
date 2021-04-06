@@ -11,9 +11,9 @@ public inherited sharing class Constants {
     public static final String FLIGHT_STATUS_DECLINED = 'Declined';
     public static final String FLIGHT_REPORT = 'Deleted flight report';
     public static final String EMAIL_MESSAGE_DEL_FLIGHTS = 'Information about tourists and counters deleted flights - ';
-    public static final String SCHEDULER_FOR_FLIGHT00 = 'Old flight must be deleted';
-    public static final String SCHEDULER_FOR_FLIGHT30 = 'Old flight must be deleted more often';
+    public static final String SCHEDULER_FOR_FLIGHT00 = 'For deleting old flight';
+    public static final String SCHEDULER_FOR_FLIGHT30 = 'For deleting old flight more often';
 //CRON
- 	public static final String SCHEDULER_FROM_00MIN = '0 0 * * * ?';
-  	public static final String SCHEDULER_FROM_30MIN = '0 30 * * * ?';
+    public static final String SCHEDULER_FROM_00MIN = '0 0 * * * ?';
+    public static final String SCHEDULER_FROM_30MIN = '0 30 * * * ?';
 }
