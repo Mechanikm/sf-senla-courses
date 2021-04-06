@@ -1,0 +1,3 @@
+SchedulerFlightDeleter sfd = new SchedulerFlightDeleter();
+String jobID00 = system.schedule(Constants.SCHEDULER_FOR_FLIGHT00, Constants.SCHEDULER_FROM_00MIN, sfd);
+String jobID30 = system.schedule(Constants.SCHEDULER_FOR_FLIGHT30, Constants.SCHEDULER_FROM_30MIN, sfd);
