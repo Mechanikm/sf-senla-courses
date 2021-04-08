@@ -1,6 +1,6 @@
 public inherited sharing class FlightDeleterBatch implements Database.Batchable<SObject>, Database.Stateful {
     private final String query = ('SELECT Id, StatusT__c, CreatedDate  FROM FLIGHT__C WHERE StatusT__C = ' + 
-        Constants.FLIGHT_STATUS_DECLINED + ' OR CreatedDate != LAST_N_DAYS:30');
+                                  Constants.FLIGHT_STATUS_DECLINED + ' OR CreatedDate != LAST_N_DAYS:30');
     private Map <Id, Integer> countTourists = new Map<Id,Integer>();
     
     public Database.QueryLocator start(Database.BatchableContext bc) {
@@ -36,14 +36,13 @@ public inherited sharing class FlightDeleterBatch implements Database.Batchable<
     
     public void finish(Database.BatchableContext bc) {
         
-        List<Admin_Setting__mdt> listEmail = [
+        String emailForReport = [
             SELECT EmailForMessages__c 
             fROM Admin_Setting__mdt
-        ];
-        String emailAdress = listEmail[0].EmailForMessages__c;
+        ] [0].EmailForMessages__c;
         
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        String[] toAddresses = new String[] {emailAdress};
+        String[] toAddresses = new String[] {emailForReport};
             mail.setToAddresses(toAddresses);
         mail.setSubject(Constants.FLIGHT_REPORT);
         mail.setPlainTextBody(Constants.EMAIL_MESSAGE_DEL_FLIGHTS + countTourists);
