@@ -1,27 +1,22 @@
 public class TouristTriggerHandler {
     public static Boolean wasExecuted;
+    
     @future
-    public static void markDuplicates(Set<Id> newTouristsIds) {
+    public static void markDuplicatesAsync(Set<Id> newTouristsIds) {
         if (newTouristsIds == null || newTouristsIds.isEmpty()) return;
-        List<Tourist__c> filteredByIds = new List<Tourist__c>();
+        List <Tourist__c> forMarkIsDuplicate = new List <Tourist__c>();
+        List<Tourist__c> filteredByIds = TouristManager.getFilterById(newTouristsIds); //Взял туристов (Id, Name, Tourist_email с такими Id)
+        List<Tourist__c> touristsWithSameNameEmail = TouristManager.getFilterByNameEmail(filteredByIds); //Туристы, у которых одинаковые имя и/или почта
         
-        filteredByIds = TouristManager.getFilterById(newTouristsIds);
-        if (filteredByIds.isEmpty()) return;
-        
-        Set<Id> duplicateNewTouristsIds = new Set<Id>();
-        
-        for (Tourist__c tourist :filteredByIds) {
-            if (newTouristsIds.contains(tourist.Id)) {
-                duplicateNewTouristsIds.add(tourist.Id);
+        for (Tourist__c tourist :touristsWithSameNameEmail) {
+            
+            for (Tourist__c touristInc :filteredByIds) {
+                if (tourist.Tourists_email__c == touristInc.Tourists_email__c && tourist.Name == touristInc.Name && tourist.Id != touristInc.Id) {
+                    tourist.IsDuplicate__c = true;
+                    forMarkIsDuplicate.add(tourist);
+                }
             }
-        }
-        
-        List <Tourist__c> forMarkIsDuplicate = TouristManager.getFilterById(duplicateNewTouristsIds);
-        if (duplicateNewTouristsIds.isEmpty()) return;
-        
-        for (Tourist__c tourist :forMarkIsDuplicate) {
-            tourist.IsDuplicate__c = true;
-        }
+        } 
         update forMarkIsDuplicate;
     }
 }
