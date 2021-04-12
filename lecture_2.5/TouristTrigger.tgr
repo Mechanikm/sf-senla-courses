@@ -4,7 +4,7 @@ Trigger TouristTrigger on Tourist__c (after insert) {
         when AFTER_INSERT {
             if (!TouristTriggerHandler.wasExecuted) {
                 TouristTriggerHandler.wasExecuted = true;
-                TouristTriggerHandler.markDuplicates(Trigger.newMap.keyset());
+                TouristTriggerHandler.markDuplicatesAsync(Trigger.newMap.keyset());
             }
         } 
     }
