@@ -13,7 +13,7 @@ public inherited sharing class FlightDeleterBatch implements Database.Batchable<
         List<Id> listIdFlightsToDelete = new List<Id>();
         
         for (Flight__c flight :flights) {
-            touristIds.add(flight.tourist__r.Id); //Беру Id полетов и туристов, связанных с устаревшими полетами
+            touristIds.add(flight.tourist__r.Id);
             idFlightsToDelete.add(flight.Id);
             
         }
@@ -49,12 +49,10 @@ public inherited sharing class FlightDeleterBatch implements Database.Batchable<
     }
     
     public void finish(Database.BatchableContext bc) {
-        
         String emailForReport = [
-            SELECT EmailForMessages__c 
-            FROM Admin_Setting__mdt
-        ] 
-            [0].EmailForMessages__c;
+        SELECT EmailForMessages__c 
+        FROM Admin_Setting__mdt
+        ][0].EmailForMessages__c;
         
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         String[] toAddresses = new String[] {emailForReport};
