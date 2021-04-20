@@ -7,7 +7,8 @@ public inherited sharing class TouristManager {
         List<Tourist__c> matchTourists = new List<Tourist__c>();
         matchTourists = [
             SELECT Id,
-            Name
+            Name,
+            Tourists_email__c
             FROM Tourist__c
             WHERE Id IN :idTourists
         ];
@@ -26,4 +27,27 @@ public inherited sharing class TouristManager {
         ];
         return touristsWithFlights;
     }
+    
+    public static List<Tourist__c> getFilterByNameEmail (List<Tourist__c> newTourists) {
+        if (newTourists == null || newTourists.isEmpty()) {
+            return new List<Tourist__c>();
+        }
+        List<Tourist__c> filtered = new List<Tourist__c>();        
+        Set<String> emails = new Set<String>();
+        Set<String> names = new Set<String>();
+        
+        for (Tourist__c tourist :newTourists) {
+            emails.add(Tourist.Tourists_email__c);
+            names.add(Tourist.Name);
+        }    
+        filtered = [
+            SELECT Name, 
+            Tourists_email__c, 
+            IsDuplicate__c
+            FROM Tourist__c
+            WHERE (Tourist__c.Tourists_email__c IN :emails
+                   AND Tourist__c.Name IN :names)
+        ];
+        return filtered;
+    } 
 }
