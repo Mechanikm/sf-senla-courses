@@ -1,8 +1,0 @@
-trigger FlightDeleterBatchIfFailTrigger on BatchApexErrorEvent (after insert) {
-    
-    switch on Trigger.operationType {
-        when AFTER_INSERT {
-            FlightDeleterBatchIfFailTriggerHandler.onAfterInsert(Trigger.new);
-        }
-    }
-}

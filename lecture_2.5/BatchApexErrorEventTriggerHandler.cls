@@ -1,4 +1,4 @@
-public class FlightDeleterBatchIfFailTriggerHandler {
+public class BatchApexErrorEventTriggerHandler {
     
     public static void onAfterInsert(List<BatchApexErrorEvent> apexErrorEvents) {
         Set<Id> asyncApexJobIds = new Set<Id>();
