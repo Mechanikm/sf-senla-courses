@@ -5,8 +5,8 @@ public class TouristTriggerHandler {
     public static void markDuplicatesAsync(Set<Id> newTouristsIds) {
         if (newTouristsIds == null || newTouristsIds.isEmpty()) return;
         List <Tourist__c> forMarkIsDuplicate = new List <Tourist__c>();
-        List<Tourist__c> filteredByIds = TouristManager.getFilterById(newTouristsIds); //Взял туристов (Id, Name, Tourist_email с такими Id)
-        List<Tourist__c> touristsWithSameNameEmail = TouristManager.getFilterByNameEmail(filteredByIds); //Туристы, у которых одинаковые имя и/или почта
+        List<Tourist__c> filteredByIds = TouristManager.getFilterById(newTouristsIds);
+        List<Tourist__c> touristsWithSameNameEmail = TouristManager.getFilterByNameEmail(filteredByIds);
         
         for (Tourist__c tourist :touristsWithSameNameEmail) {
             
