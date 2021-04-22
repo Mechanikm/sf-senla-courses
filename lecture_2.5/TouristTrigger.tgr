@@ -2,7 +2,7 @@ Trigger TouristTrigger on Tourist__c (after insert) {
     
     switch on Trigger.operationType {
         when AFTER_INSERT {
-            if (!TouristTriggerHandler.wasExecuted) {
+            if (TouristTriggerHandler.wasExecuted != true) {
                 TouristTriggerHandler.wasExecuted = true;
                 TouristTriggerHandler.markDuplicatesAsync(Trigger.newMap.keyset());
             }
