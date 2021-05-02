@@ -6,8 +6,15 @@ public inherited sharing class Constants {
     public static final String FIRST_CUSTOM_EXCEPTION = 'First exception';
     public static final String FINALLY_OK_CUSTOM_EXCEPTION = 'All right! Not any mistakes :)';
     public static final String FINALLY_EXCEPTIONS_HAPPENED = 'The following exception has occurred: ';
+//Naming
+	public static final String NAME_DAILY_FORECAST = 'Daily Forecast';
+    public static final String NAME_DATETIME = 'datetime';
+    public static final String NAME_MIN_TEMP = 'min_temp';
+    public static final String NAME_MAX_TEMP = 'max_temp';
 //Nums
     public static final Decimal AVERAGE_DAYS_IN_YEAR = 365.25;
+    public static final Decimal ABSOLUTE_ZERO_CELCIUS = -273.15;
+    public static final Integer NUMBER_TWO = 2;
 //Messages
     public static final String FLIGHT_STATUS_DECLINED = 'Declined';
     public static final String FLIGHT_REPORT = 'Deleted flight report';

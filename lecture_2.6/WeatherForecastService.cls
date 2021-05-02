@@ -18,8 +18,9 @@ public class WeatherForecastService {
                 
                 for (Integer i = 0; i < multidata.size(); i++) {
                     Map<String, Object> junctionMap = (Map<String, Object>) multidata[i];
-                    Date forecastDate = Date.valueOf(String.ValueOf(junctionMap.get('datetime')));
-                    Decimal forecastTemp = averageTemperature(Decimal.valueOf(String.valueOf(junctionMap.get('min_temp'))), Decimal.valueOf(String.valueOf(junctionMap.get('max_temp'))));
+                    Date forecastDate = Date.valueOf(String.ValueOf(junctionMap.get(Constants.NAME_DATETIME)));
+                    Decimal forecastTemp = averageTemperature(Decimal.valueOf(String.valueOf(junctionMap.get(Constants.NAME_MIN_TEMP))),
+                                                              Decimal.valueOf(String.valueOf(junctionMap.get(Constants.NAME_MAX_TEMP))));
                     dateAndTempMap.put(forecastDate, forecastTemp); 
                 }
             }
@@ -29,7 +30,7 @@ public class WeatherForecastService {
     }
     
     private static Decimal averageTemperature (Decimal min, Decimal max) {
-        if (min == null || max == null) {return -273.15;}
-        return ((min + max) / 2);
+        if (min == null || max == null) {return Constants.ABSOLUTE_ZERO_CELCIUS;}
+        return (min + max) / Constants.NUMBER_TWO;
     }
 }
