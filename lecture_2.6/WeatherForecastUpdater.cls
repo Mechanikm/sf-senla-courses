@@ -2,6 +2,7 @@ public inherited sharing class WeatherForecastUpdater {
     public virtual class BaseException extends Exception {}
     public class WeatherForecastException extends BaseException {} 
     
+    @future(callout=true)
     public static void updateForecasts() {
         List<Space_Point__c> allSpacePoints = WeatherForecastUpdaterManager.getAllSpacePoints();
         List <Weather_Daily_Forecast__c> actualSpacePointsWeather = new List<Weather_Daily_Forecast__c>();
