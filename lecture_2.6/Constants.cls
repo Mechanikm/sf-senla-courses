@@ -22,6 +22,7 @@ public inherited sharing class Constants {
 //Scheduler
     public static final String EVERY_HOUR_FROM_00MIN = '0 0 * * * ?';
     public static final String EVERY_HOUR_FROM_30MIN = '0 30 * * * ?';
+    public static final String EVERY_DAY_FROM_00HOUR = '0 0 0 * * ?';
 //HTTP
 	public static final String HTTP_METHOD_GET = 'GET';
     public static final String HTTP_METHOD_POST = 'POST';
