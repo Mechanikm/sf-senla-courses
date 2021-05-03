@@ -1,0 +1,2 @@
+SchedulerWeatherForecastUpdater swfu = new SchedulerWeatherForecastUpdater();
+String jobID00 = system.schedule('For updating dayly weather forecast', Constants.EVERY_DAY_FROM_00HOUR, swfu);
