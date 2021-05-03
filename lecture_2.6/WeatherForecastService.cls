@@ -31,6 +31,6 @@ public class WeatherForecastService {
     
     private static Decimal averageTemperature (Decimal min, Decimal max) {
         if (min == null || max == null) {return Constants.ABSOLUTE_ZERO_CELCIUS;}
-        return (min + max) / Constants.NUMBER_TWO;
+        return ((min + max) / Constants.NUMBER_TWO).setScale(1);
     }
 }
