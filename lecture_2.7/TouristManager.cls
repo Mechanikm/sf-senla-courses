@@ -8,6 +8,7 @@ public inherited sharing class TouristManager {
         matchTourists = [
             SELECT Id,
             Name,
+            Birthdate__c,
             Tourists_email__c
             FROM Tourist__c
             WHERE Id IN :idTourists
