@@ -47,11 +47,26 @@ class TouristManagerTest {
     
     @IsTest
     static void getInactiveTouristsWithFlights_Test() {
-        TestDataFactory.createFlightsWithTourists();
-        Map<Id, Tourist__c> idsTourists = new Map<Id, Tourist__c>([SELECT Id FROM Tourist__c]);
-        List<Tourist__c> tourists = TouristManager.getInactiveTouristsWithFlights(idsTourists);
+        List<Tourist__c> tourists = new List<Tourist__c>();
+        List<Trip__c> trips = new List<Trip__c>();
+        List<Integer> dateDeviation = new List<Integer>{-120, -60, 0, 0, 0, 1, 30, 60, 90, 120};
+        List<Flight__c> flights = new List<Flight__c>();
         
-        System.assertEquals(10, tourists.size());
+        tourists = TestDataFactory.createTourists(20);
+        trips = TestDataFactory.createTrips(10, dateDeviation);
+        flights = TestDataFactory.createFlights(10, tourists, trips);
+        Database.SaveResult[] testing = Database.insert(flights, false);
+               
+        Map<Id, Tourist__c> idsTourists = new Map<Id, Tourist__c>([SELECT Id FROM Tourist__c]);
+        List<Tourist__c> testTourists = TouristManager.getInactiveTouristsWithFlights(idsTourists);
+        
+        List<Flight__c> chechFl = new List<Flight__c>();
+        chechFl = [
+            SELECT Id, Name
+            FROM Flight__c
+        ];
+        System.debug(chechFl.size());
+        System.assertEquals(10, testTourists.size());
     }
     
     @IsTest
